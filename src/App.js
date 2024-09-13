@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { AuthProvider } from './context/AuthContext';
+import { TodoProvider } from './context/TodoContext';
+import Register from './components/Auth/Register';
+import Login from './components/Auth/Login';
+import TodoList from './components/Todo/TodoList';
+import AddTodo from './components/Todo/AddTodo';
+import Header from './components/Header';
+// src/App.js
+import './styles/App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <TodoProvider>
+        <Header />
+        <main>
+          <Register />
+          <Login />
+          <AddTodo />
+          <TodoList />
+        </main>
+      </TodoProvider>
+    </AuthProvider>
   );
 }
 
